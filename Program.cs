@@ -1,4 +1,4 @@
-﻿// Программа, которая упорядочит по убыванию элементы каждой строки двумерного массива.
+﻿/* Программа, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 
 void FillArr (int[,] array)
 {   for (int i=0; i<array.GetLength(0); i++){
@@ -41,3 +41,42 @@ for (int i=0; i<array.GetLength(0); i++){
 Function(mass);
 Console.WriteLine();
 PrintArr(mass);
+*/
+
+// программа, которая находит строку с наименьшей суммой элементов
+
+void FillArr (int[,] array)
+{   for (int i=0; i<array.GetLength(0); i++){
+        for (int j=0; j<array.GetLength(1); j++){
+            array[i,j] = new Random().Next(0,10);}
+}   }
+void PrintArr(int[,] array)
+{   for (int i=0; i<array.GetLength(0); i++){
+        for (int j=0; j<array.GetLength(1); j++)
+        {Console.Write(array[i,j]+" ");}
+Console.WriteLine();}}
+
+Console.WriteLine("Введите число строк");
+int str = int.Parse(Console.ReadLine());
+Console.WriteLine("Введите число столбцов");
+int stolb = int.Parse(Console.ReadLine());
+
+int [,] mass = new int[str,stolb];
+FillArr(mass);
+PrintArr(mass);
+
+void MinSumElStr (int[,] array){
+int MinSum=1000000;
+int SumEl=0;
+int NumStr=0;
+for (int i=0; i<array.GetLength(0); i++){
+    for (int j=0; j<array.GetLength(1); j++)
+        SumEl=array[i,j]+SumEl;
+    if (SumEl<MinSum) {
+        MinSum=SumEl;
+        NumStr=i;}
+    SumEl=0;
+}
+Console.WriteLine($"строка с наименьшей суммой элементов - {NumStr+1}");
+}
+MinSumElStr(mass);
