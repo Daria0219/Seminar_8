@@ -127,8 +127,8 @@ int [,] mass3=UmnozenieMatriz(mass1, mass2);
 PrintArr(mass3);
 */
 
-// трёхмерный массив из неповторяющихся двузначных чисел
-//программа, которая построчно выводит трёхмерный массив, добавляя индексы каждого элемента
+/* трёхмерный массив из неповторяющихся двузначных чисел
+программа, которая построчно выводит трёхмерный массив, добавляя индексы каждого элемента
 
 void FillArr (int[,,] array)
 {  for (int i=0; i<array.GetLength(0); i++){
@@ -143,8 +143,9 @@ for (int i=0; i<array.GetLength(0); i++){
                 for (int y=0; y<array.GetLength(1); y++){
                     for (int z=0; z<array.GetLength(2); z++){
                         if (i!=x || j!=y || k!=z){
-                            while (array[i,j,k] == array [x,y,z]) array[i,j,k] = new Random().Next(10,100);
-                        }}}}}}}}
+                            while (array[i,j,k] == array [x,y,z]) 
+                                array[i,j,k] = new Random().Next(10,100);}
+                        }}}}}}}
 
 void PrintArr(int[,,] array)
 {   for (int i=0; i<array.GetLength(0); i++){
@@ -157,4 +158,36 @@ void PrintArr(int[,,] array)
 int [,,] mass = new int[2,2,2];
 FillArr(mass);
 PrintArr(mass);
+*/
+void FillArr (int[,] array)
+{   array[0,0]=1;
+    int endStr=array.GetLength(0);
+    int endStolb=array.GetLength(1);
 
+    for (int j=0; j<array.GetLength(1)-1; j++){
+        array[0,j+1]=array[0,j]+1;}
+    for (int i=0; i<array.GetLength(0)-1; i++){
+        array[i+1,array.GetLength(1)-1]=array[i,array.GetLength(1)-1]+1;}
+    for (int j=array.GetLength(1)-1; j>0; j=j-1){
+        array[array.GetLength(0)-1,j-1]=array[array.GetLength(0)-1,j]+1;}
+    for (int i=array.GetLength(0)-1; i>1; i=i-1){
+        array[i-1,0]=array[i,0]+1;}
+    for (int j=0; j<array.GetLength(1)-2; j++){
+        array[1,j+1]=array[1,j]+1;}
+    for (int j=array.GetLength(0)-2; j>0; j=j-1){
+        array[array.GetLength(0)-1,j-1]=array[array.GetLength(0)-1,j]+1;}
+    for (int i=1; i<array.GetLength(0)-2; i=i+1){
+        array[i+1,array.GetLength(1)-2]=array[i,array.GetLength(1)-2]+1;}
+    for (int j=array.GetLength(1)-2; j>1; j=j-1){
+        array[array.GetLength(0)-2,j-1]=array[array.GetLength(0)-2,j]+1;} 
+}   
+void PrintArr(int[,] array)
+{   for (int i=0; i<array.GetLength(0); i++){
+        for (int j=0; j<array.GetLength(1); j++){
+            if (array[i,j]/10==0) Console.Write("0"+array[i,j]+" ");
+            else Console.Write(array[i,j]+" ");}
+Console.WriteLine();}}
+
+int [,] mass = new int[4,4];
+FillArr(mass);
+PrintArr(mass);
