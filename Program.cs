@@ -43,7 +43,7 @@ Console.WriteLine();
 PrintArr(mass);
 */
 
-// программа, которая находит строку с наименьшей суммой элементов
+/* программа, которая находит строку с наименьшей суммой элементов
 
 void FillArr (int[,] array)
 {   for (int i=0; i<array.GetLength(0); i++){
@@ -80,3 +80,42 @@ for (int i=0; i<array.GetLength(0); i++){
 Console.WriteLine($"строка с наименьшей суммой элементов - {NumStr+1}");
 }
 MinSumElStr(mass);
+*/
+void FillArr (int[,] array)
+{   for (int i=0; i<array.GetLength(0); i++){
+        for (int j=0; j<array.GetLength(1); j++){
+            array[i,j] = new Random().Next(0,10);}
+}   }
+void PrintArr(int[,] array)
+{   for (int i=0; i<array.GetLength(0); i++){
+        for (int j=0; j<array.GetLength(1); j++)
+        {Console.Write(array[i,j]+" ");}
+Console.WriteLine();}}
+
+Console.WriteLine("Введите число строк и столбцов первой матрицы");
+int str1 = int.Parse(Console.ReadLine());
+int stolb1 = int.Parse(Console.ReadLine());
+Console.WriteLine("Введите число строк и столбцов второй матрицы (количество столбцов первой матрицы должно быть равно количеству строк второй матрицы)");
+int str2 = int.Parse(Console.ReadLine());
+int stolb2 = int.Parse(Console.ReadLine());
+int [,] mass1 = new int[str1,stolb1];
+int [,] mass2 = new int[str2,stolb2];
+FillArr(mass1);
+FillArr(mass2);
+PrintArr(mass1);
+Console.WriteLine();
+PrintArr(mass2);
+Console.WriteLine();
+int [,] UmnozenieMatriz(int[,] array1, int[,] array2){
+    int[,] newArray = new int [array1.GetLength(0),array2.GetLength(1)];
+        for (int i=0; i<array1.GetLength(0); i++){
+            for (int l=0; l<array2.GetLength(1); l++){
+                int k=0;
+                for (int j=0; j<array1.GetLength(1); j++){
+                    newArray[i,l]=newArray[i,l]+array1[i,j]*array2[k,l];
+                    k++;}        
+        }
+}   return newArray;
+}
+int [,] mass3=UmnozenieMatriz(mass1, mass2);
+PrintArr(mass3);
