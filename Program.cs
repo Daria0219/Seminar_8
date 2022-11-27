@@ -81,6 +81,8 @@ Console.WriteLine($"строка с наименьшей суммой элеме
 }
 MinSumElStr(mass);
 */
+/* произведение двух матриц
+
 void FillArr (int[,] array)
 {   for (int i=0; i<array.GetLength(0); i++){
         for (int j=0; j<array.GetLength(1); j++){
@@ -123,3 +125,36 @@ int [,] UmnozenieMatriz(int[,] array1, int[,] array2){
 }
 int [,] mass3=UmnozenieMatriz(mass1, mass2);
 PrintArr(mass3);
+*/
+
+// трёхмерный массив из неповторяющихся двузначных чисел
+//программа, которая построчно выводит трёхмерный массив, добавляя индексы каждого элемента
+
+void FillArr (int[,,] array)
+{  for (int i=0; i<array.GetLength(0); i++){
+        for (int j=0; j<array.GetLength(1); j++){
+            for (int k=0; k<array.GetLength(1); k++){
+                array[i,j,k] = new Random().Next(10,100);}}}
+     
+for (int i=0; i<array.GetLength(0); i++){
+    for (int j=0; j<array.GetLength(1); j++){
+        for (int k=0; k<array.GetLength(2); k++){
+            for (int x=0; x<array.GetLength(0); x++){
+                for (int y=0; y<array.GetLength(1); y++){
+                    for (int z=0; z<array.GetLength(2); z++){
+                        if (i!=x || j!=y || k!=z){
+                            while (array[i,j,k] == array [x,y,z]) array[i,j,k] = new Random().Next(10,100);
+                        }}}}}}}}
+
+void PrintArr(int[,,] array)
+{   for (int i=0; i<array.GetLength(0); i++){
+        for (int j=0; j<array.GetLength(1); j++){
+        Console.WriteLine();
+            for (int k=0; k<array.GetLength(1); k++)
+        {Console.Write($"{array[i,j,k]}({i},{j},{k}) ");}
+}}}
+
+int [,,] mass = new int[2,2,2];
+FillArr(mass);
+PrintArr(mass);
+
