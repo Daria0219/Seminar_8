@@ -98,6 +98,10 @@ int stolb1 = int.Parse(Console.ReadLine());
 Console.WriteLine("Введите число строк и столбцов второй матрицы (количество столбцов первой матрицы должно быть равно количеству строк второй матрицы)");
 int str2 = int.Parse(Console.ReadLine());
 int stolb2 = int.Parse(Console.ReadLine());
+
+if (stolb1!=str2) Console.WriteLine("Ошибка, количество столбцов первой матрицы должно не равно количеству строк второй матрицы");
+return;
+
 int [,] mass1 = new int[str1,stolb1];
 int [,] mass2 = new int[str2,stolb2];
 FillArr(mass1);
